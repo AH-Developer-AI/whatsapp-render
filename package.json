@@ -1,7 +1,6 @@
 {
   "name": "whatsapp-otp-service",
   "version": "1.0.0",
-  "description": "WhatsApp OTP Service with QR Login",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
