@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WhatsApp QR Login</title>
+  <title>WhatsApp Login</title>
   <script src="/socket.io/socket.io.js"></script>
 </head>
-<body>
+<body style="font-family: Arial; text-align: center;">
   <h2>Scan QR Code with WhatsApp</h2>
-  <img id="qr" style="width:300px;" />
+  <img id="qr" style="width:300px; display:none;" />
   <p id="status">Waiting for QR...</p>
 
   <script>
@@ -14,11 +14,14 @@
 
     socket.on('qr', (qrImage) => {
       document.getElementById('qr').src = qrImage;
-      document.getElementById('status').innerText = 'Scan this QR';
+      document.getElementById('qr').style.display = 'block';
+      document.getElementById('status').innerText =
+        'Scan this QR from WhatsApp > Linked Devices';
     });
 
     socket.on('ready', () => {
-      document.getElementById('status').innerText = '✅ WhatsApp Connected';
+      document.getElementById('status').innerText =
+        '✅ WhatsApp Connected Successfully';
       document.getElementById('qr').style.display = 'none';
     });
   </script>
