@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WhatsApp QR Login</title>
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <h2>Scan QR Code with WhatsApp</h2>
+  <img id="qr" style="width:300px;" />
+  <p id="status">Waiting for QR...</p>
+
+  <script>
+    const socket = io();
+
+    socket.on('qr', (qrImage) => {
+      document.getElementById('qr').src = qrImage;
+      document.getElementById('status').innerText = 'Scan this QR';
+    });
+
+    socket.on('ready', () => {
+      document.getElementById('status').innerText = '✅ WhatsApp Connected';
+      document.getElementById('qr').style.display = 'none';
+    });
+  </script>
+</body>
+</html>
